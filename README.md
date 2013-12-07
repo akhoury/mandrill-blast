@@ -36,4 +36,5 @@ it's pretty simple see [sample.template.html](sample.template.html) for an examp
 You need an account and a valid API Key, get one at [mandrill.com](http://mandrill.com/)
 
 ### Todo
-Anything that the heart desires, I needed this as a 10 minutes hack and it got the job done, if you have ideas or needs, submit a pull or feature request.
+* make it a reusable module
+* anything that the heart desires, I needed this as a 10 minutes hack and it got the job done, if you have ideas or needs, submit a pull or feature request.
