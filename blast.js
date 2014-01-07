@@ -77,7 +77,9 @@ csv()
 			to: [{email: validateEmail(data[toEmailColumn]), name: toNameColumn ? data[toNameColumn] : ''}],
 			from_email: emailFrom,
 			subject: subjectTemplate(data),
-			text: bodyTemplate(data)
+			html: bodyTemplate(data),
+			text: bodyTemplate(data),
+			auto_text: true
 		};
 
 		if (message.to[0].email && message.text) {
