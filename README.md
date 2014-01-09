@@ -16,7 +16,7 @@ git clone https://github.com/akhoury/mandrill-blast.git
 ### Usage
 ```bash
 cd mandrill-blast
-node blast.js --source="sample.emails.csv" --key="0123456789" --template="sample.template.html" --from="you@example.com" --to-email-column="email" --subject="Hi {{name}}" --to-name-column="name"
+node blast.js --source="sample.emails.csv" --key="0123456789" --template="sample.template.html" --from-email="you@example.com" --from-name="Your Name" --to-email-column="email" --subject="Hi {{name}}" --to-name-column="name"
 ```
 
 ### CSV
