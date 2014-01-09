@@ -1,7 +1,7 @@
 
 {
 	"name": "mandrill-blast",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "blast a CSV list of emails with template data via Mandrill API",
 	"main": "blast.js",
 	"scripts": {

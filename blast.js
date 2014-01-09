@@ -13,7 +13,8 @@ var argv = require('optimist').argv,
 			+ '\n-s | --source	: [REQUIRED] input csv file of emails, see emails.csv for a sample'
 			+ '\n-t | --template	: [REQUIRED] input template, can be any type text, or html, see template.html to find out how to write the Dynamic fields'
 			+ '\n-k | --key	: [REQUIRED] Your Mandrill API key'
-			+ '\n-f | --from : [REQUIRED] Your "from_email" '
+			+ '\n-fe | --from-email : [REQUIRED] Your "from_email" '
+			+ '\n-fn | --from-name : [OPTIONAL] Your "from_name" '
 			+ '\n-tec | --to-email-column : [REQUIRED] which {{COLUMN-NAME}} would like to use for the "email" field, such as --to-email-column="emailaddress", the script will look for the "emailaddress" value of each row and use it as the to.email'
 			+ '\n-s | --subject : [OPTIONAL] The Email "subject", you can use template in it, such as --email-subject="Hello {{name}}", optional, defaults to blank.'
 			+ '\n-tnc | --to-name-column : [OPTIONAL] which {{COLUMN}} would like to use for the "name" field, such as --to-name-column="firstname", the script will look for the "firstname" value of each row and use it as the "name" in the receiver\'s info, optional, defaults to blank'
@@ -53,8 +54,10 @@ else bodyTemplate = Handlebars.compile((fs.readFileSync(templateFile) || '<h2>EM
 if (!argv.k && !argv.key) error('You need to provide a valid Mandrill API key.');
 var mandrill = Mandrill(argv.k || argv.key);
 
-var emailFrom = argv.f || argv.from;
+var emailFrom = argv.fe || argv['from-email'];
 if (!emailFrom) error('You must provide a "from" email.');
+
+var nameFrom = argv.fn || argv['from-name'];
 
 var toEmailColumn = argv.tec || argv['to-email-column'];
 if (!toEmailColumn) error('You must provide a "to-email-column", basically, which column of each row is the email-address to send to');
@@ -76,6 +79,7 @@ csv()
 		var message = {
 			to: [{email: validateEmail(data[toEmailColumn]), name: toNameColumn ? data[toNameColumn] : ''}],
 			from_email: emailFrom,
+			from_name: nameFrom,
 			subject: subjectTemplate(data),
 			html: bodyTemplate(data),
 			text: bodyTemplate(data),
