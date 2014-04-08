@@ -3,6 +3,10 @@ mandrill-blast
 
 quick and dirty way to blast a CSV list of emails with template data using Node and the Mandrill API
 
+### If you're looking to blast emails NOW!
+use http://akhoury.github.io/pages/mandrill-blast/
+
+
 ### Install
 You need to have [NodeJS](http://nodejs.org/) installed and running, then
 ```bash
